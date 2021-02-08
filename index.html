@@ -4,12 +4,20 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JavaScript Study Note</title>
-  <!-- <link href="./style.css" rel="stylesheet" /> -->
+  <title>Window Size</title>
+  <style>
+    #practice {
+      display: inline-block;
+      background-color: thistle;
+      padding: 16px;
+      margin: 16px;
+      font-size: 32px;
+
+    }
+  </style>
 </head>
 <body>
   <p id="practice"></p>
-  <!-- <script type="text/javascript" src="./index.js" defer></script> -->
   <script>
     let practice = document.getElementById("practice");
     practice.innerHTML = 
@@ -17,6 +25,10 @@
     "window.outer: " + window.outerWidth + ", " + window.outerHeight + "<br />" +
     "window.inner: " + window.innerWidth + ", " + window.innerHeight + "<br />" +
     "documentElement.clientWidth & clientHeight: " + practice.clientWidth + ", " + practice.clientHeight;
+
+    window.addEventListener('resize', function() {
+      console.log('resize');
+    })
   </script>
 </body>
 </html>

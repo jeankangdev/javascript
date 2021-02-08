@@ -1,10 +1,12 @@
-// create Express server
 const express = require('express');
 const app = express();
 const port = 3000;
 
-// const router = require('./router');
-// app.use('/', router);
+// app.set('view engine', 'html');
+
+// app.use('/', function (req, res) {
+//   res.render('./index');
+// })
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
