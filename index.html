@@ -12,23 +12,30 @@
       padding: 16px;
       margin: 16px;
       font-size: 32px;
-
     }
   </style>
 </head>
 <body>
-  <p id="practice"></p>
+  <p id="practice">Window Size</p>
   <script>
-    let practice = document.getElementById("practice");
-    practice.innerHTML = 
-    "window.screen: " + window.screen.width + ", " + window.screen.height + "<br />" +
-    "window.outer: " + window.outerWidth + ", " + window.outerHeight + "<br />" +
-    "window.inner: " + window.innerWidth + ", " + window.innerHeight + "<br />" +
-    "documentElement.clientWidth & clientHeight: " + practice.clientWidth + ", " + practice.clientHeight;
+    'use strict';
 
-    window.addEventListener('resize', function() {
-      console.log('resize');
-    })
+    const practice = document.querySelector("#practice");
+
+    function updatePractice() {
+      practice.innerHTML = `
+      window.screen: ${window.screen.width}, ${window.screen.height} <br/>
+      window.outer: ${window.outerWidth}, ${window.outerHeight} <br/>
+      window.inner: ${window.innerWidth}, ${window.innerHeight} <br/>
+      documentElement.clientWidth: ${document.documentElement.clientWidth}, ${document.documentElement.clientHeight}
+      `;      
+    }
+
+    window.addEventListener('resize', () => {
+      updatePractice();
+    });
+    
+    updatePractice();
   </script>
 </body>
 </html>
