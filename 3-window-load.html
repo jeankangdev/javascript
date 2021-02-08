@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Window Load</title>
+  <script src="test.js" defer></script>
+  <style>
+    img {
+      width: 400px;
+      display: flex;
+      justify-content: center;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <img src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/cat_relaxing_on_patio_other/1800x1200_cat_relaxing_on_patio_other.jpg" alt="">
+  <script>
+    // only document
+    // when there are lots of resources to be downloaded,
+    // using DOMContentLoaded is faster
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('DOMContentLoaded: only after document loaded');
+    });
+
+    // after resources (css, img)
+    window.addEventListener('load', () => {
+      console.log('load: after recourses (css, images)');
+    });
+
+    // before unload
+    window.addEventListener('beforeunload', () => {
+      console.log('beforeunloaded');
+    });
+
+    // resource is being unloaded
+    window.addEventListener('unload', () => {
+      console.log('unload');
+    });
+  </script>
+</body>
+</html>
