@@ -4,38 +4,62 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Window Size</title>
+  <title>Window Coordinates</title>
   <style>
-    #practice {
-      display: inline-block;
-      background-color: thistle;
+    body {
+      background-color: orange;
+      /* overflow: hidden; */
+    }
+
+    div {
+      background-color: blanchedalmond;
+      width: 100px;
+      height: 100px;
       padding: 16px;
       margin: 16px;
-      font-size: 32px;
+    }
+
+    .special {
+      background-color: orangered;
     }
   </style>
 </head>
 <body>
-  <p id="practice">Window Size</p>
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box special"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
   <script>
-    'use strict';
 
-    const practice = document.querySelector("#practice");
+    const boxes = document.querySelectorAll('.box');
 
-    function updatePractice() {
-      practice.innerHTML = `
-      window.screen: ${window.screen.width}, ${window.screen.height} <br/>
-      window.outer: ${window.outerWidth}, ${window.outerHeight} <br/>
-      window.inner: ${window.innerWidth}, ${window.innerHeight} <br/>
-      documentElement.clientWidth: ${document.documentElement.clientWidth}, ${document.documentElement.clientHeight}
-      `;      
+    function addMultipleListeners(event) {
+      changeBoxColor(event);
+      displayCoordinates(event);
     }
 
-    window.addEventListener('resize', () => {
-      updatePractice();
-    });
-    
-    updatePractice();
-  </script>
+    function changeBoxColor(event) {
+      event.target.classList.add('special');
+    }
+
+    function displayCoordinates(event) {
+      event.target.innerHTML = `
+        Client X, Y: ${event.clientX}, ${event.clientY} <br/>
+        Page X, Y  : ${event.pageX}, ${event.pageY} <br/>
+        `;
+    }
+
+    // change color and display coordinates of boxes when each box is clicked
+    boxes.forEach((box) => box.addEventListener('click', addMultipleListeners));
+
+    const special = document.querySelector('.special');
+    console.log(special.getBoundingClientRect());
+</script>
 </body>
 </html>
