@@ -11,7 +11,7 @@
       /* overflow: hidden; */
     }
 
-    div {
+    div.box {
       background-color: blanchedalmond;
       width: 100px;
       height: 100px;
@@ -19,12 +19,32 @@
       margin: 16px;
     }
 
-    .special {
+    div.special {
       background-color: orangered;
     }
+
+    aside {
+      display: flex;
+      justify-content: flex-end;
+      position: fixed;
+      right: 10px;
+      top: 10px;
+    }
+
+    button:not(:last-child) {
+      margin: 0 4px;
+    }
+
   </style>
 </head>
 <body>
+
+  <aside>
+    <button class="scroll-by">Scroll by 100px(y)</button>
+    <button class="scroll-to">Scroll to 100px(y)</button>
+    <button class="scroll-into">Scroll into special</button>
+  </aside>
+
   <div class="box"></div>
   <div class="box"></div>
   <div class="box"></div>
@@ -35,7 +55,27 @@
   <div class="box"></div>
   <div class="box"></div>
   <div class="box"></div>
+
   <script>
+
+    const btnScrollBy = document.querySelector('.scroll-by');
+    const btnScrollTo = document.querySelector('.scroll-to');
+    const btnScrollInto = document.querySelector('.scroll-into');
+
+    btnScrollBy.addEventListener('click', function() {
+      // window.scrollBy(0, 100);
+      window.scrollBy({top: 100, left: 0, behavior: "smooth"});
+    });
+
+    btnScrollTo.addEventListener('click', function() {
+      // window.scrollTo(0, 100);
+      window.scrollTo({top: 100, left: 0, behavior: "smooth"});
+    })
+
+    let special = document.querySelector('.special');
+    btnScrollInto.addEventListener('click', function() {
+      special.scrollIntoView({behavior: "smooth"});
+    })
 
     const boxes = document.querySelectorAll('.box');
 
@@ -58,8 +98,8 @@
     // change color and display coordinates of boxes when each box is clicked
     boxes.forEach((box) => box.addEventListener('click', addMultipleListeners));
 
-    const special = document.querySelector('.special');
     console.log(special.getBoundingClientRect());
+
 </script>
 </body>
 </html>
