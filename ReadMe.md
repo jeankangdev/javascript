@@ -37,3 +37,12 @@ chrome::extensions/ => remove extensions
    top: 50%;  
    left: 50%;  
    transform: translate(-50%, -50%);
+
+10. must add `px` to css  
+    element.style.top = `${}px`;
+
+11. Alt + arrow down or up: switch position of the row
+
+12. Alt + click: set cursor to multiple rows
+
+13. Ctrl + F2: change all occurrences
