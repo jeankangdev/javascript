@@ -27,3 +27,13 @@ chrome::extensions/ => remove extensions
 5. position: absolute; => when I want the object to be moved freely
 
 6. document.addEventListener('mousemove', () => {});
+
+7. <div> => block  
+   <span>=> inline
+
+8. we can set elements globally, to const outside the function and we can change the properties of the const variables
+
+9. how to put an element in the center?  
+   top: 50%;  
+   left: 50%;  
+   transform: translate(-50%, -50%);
