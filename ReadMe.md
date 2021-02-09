@@ -23,3 +23,7 @@ chrome::extensions/ => remove extensions
 4.  css custom cursor not working
 
 - body {cursor: url();} => body, html {cursor: url(), auto;}
+
+5. position: absolute; => when I want the object to be moved freely
+
+6. document.addEventListener('mousemove', () => {});
