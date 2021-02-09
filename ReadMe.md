@@ -10,3 +10,16 @@ app.get('/', function(req, res) {
    Unchecked runtime.lastError: The message port closed before a response was received.
 
 chrome::extensions/ => remove extensions
+
+3. stylesheet not loaded because of MIME-type
+
+- add the code below in server.js  
+  app.use(express.static(\_\_dirname + '/public'));
+- make public > css > style.css  
+   public > img > img.png
+- include stylesheet in index.html
+  <link rel="stylesheet" href="./css/style.css"> => no need to write public again since we did it in server.js
+
+4.  css custom cursor not working
+
+- body {cursor: url();} => body, html {cursor: url(), auto;}
