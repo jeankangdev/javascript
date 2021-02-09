@@ -5,8 +5,101 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Display Coordinates</title>
-  <link rel="stylesheet" href="./css/style.css">
+  <!-- <link rel="stylesheet" href="./css/style.css"> -->
+  <style>
+    html, body {
+      background-color: black;
+      /* cursor: url(./img/target.png) 4 12, auto; */
+    }
+/* 
+    .div {
+      position: absolute;
+      overflow: visible;
+    } */
+
+    .target {
+      display: none;
+      position: absolute;
+      z-index: 1;
+      /* background: yellow; */
+      overflow: hidden;
+    }
+
+    .horizon {
+      display: none;
+      position: absolute;
+      width: 100vw;
+      height: 2px;
+      background: goldenrod;
+    }
+
+    .vertical {
+      display: none;
+      position: absolute;
+      height: 100vh;
+      width: 2px;
+      background: goldenrod;
+    }
+
+    .coordinates {
+      font-size: 14px;
+      position: absolute;
+      width: 100px;
+      height: 20px;
+      color: goldenrod;
+    }
+  </style>
 </head>
 <body>
+  <div class="target"><img src=./img/target.png></div>
+  <div class="horizon"></div>
+  <div class="vertical"></div>
+  <div class="coordinates"></div>
 </body>
+<script>
+
+  function displayTarget(event) {
+    let target = document.querySelector('.target');
+    const targetWidth = target.getBoundingClientRect().width;
+    const targetHeight = target.getBoundingClientRect().height;
+
+    target.style.display = "flex";
+
+    target.style.top = `${event.pageY - targetHeight / 2 + 1}px`;
+    target.style.left = `${event.pageX - targetWidth / 2 + 1}px`;
+  }
+
+  function displayLines(event) {
+    let horizon = document.querySelector('.horizon');
+    let vertical = document.querySelector('.vertical');
+
+    let pageX = event.pageX;
+    let pageY = event.pageY;
+
+    horizon.style.display = "flex";
+    vertical.style.display = "flex";
+    horizon.style.top = `${pageY}px`;
+    vertical.style.left = `${pageX}px`;
+  }
+
+  function displayCoordinates(event) {
+    let pageX = event.pageX;
+    let pageY = event.pageY;
+
+    let coordinates = document.querySelector('.coordinates');
+  
+    coordinates.style.top = `${pageY + 20}px`;
+    coordinates.style.left = `${pageX + 20}px`;
+
+    coordinates.innerHTML = `${pageX}px, ${pageY}px`;
+  }
+
+  function addMultipleCallbacks(event) {
+    displayTarget(event);
+    displayLines(event);
+    displayCoordinates(event);
+  }
+
+  document.addEventListener('mousemove', addMultipleCallbacks);
+</script>
 </html>
