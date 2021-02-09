@@ -1,0 +1,5 @@
+body,
+html {
+  background-color: black;
+  cursor: url(../img/target.png), auto;
+}
