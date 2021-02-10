@@ -1,43 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      html {
-        padding: 0px;
-        margin: 0px;
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: black;
+    }
 
-      body {
-        background-color: black;
-        text-align: center;
-      }
-      section {
-        width: 50%;
-        margin: 50px auto;
-        background-color: brown;
-        border-radius: 20px;
-        padding: 20px;
-      }
-      img {
-        z-index: 100;
-        will-change: opacity;
-      }
-      h1,
-      h3,
-      span {
-        color: white;
-      }
-    </style>
-  </head>
-  <body>
-    <section>
-      <img src="img/avatar.png" alt="avatar" />
-      <h1 id="brand">Dream Coding</h1>
-      <h3>Don't forget to code your dream</h3>
-    </section>
-    <span>Hello World!</span>
-  </body>
+    .line {
+      position: absolute;
+      background-color: white;
+    }
+
+    .horizontal {
+      width: 100%;
+      height: 1px;
+      top: 0px;
+      left: 0px;
+    }
+
+    .vertical {
+      width: 1px;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+    }
+
+    .target {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      transform: translate(-100%, -100%);
+    }
+    
+    .tag {
+      color: white;
+      position: absolute;
+      font-size: 30px;
+      top: 0px;
+      left: 0px;
+      transform: translate(20px, 20px);
+    }
+  </style>
+</head>
+<body>
+  <div class="line horizontal"></div>
+  <div class="line vertical"></div>
+  <img class="target" src="img/target.png" alt="target">
+  <span class="tag"></span>
+<script>
+  'use strict';
+
+  const horizontal = document.querySelector('.horizontal');
+  const vertical = document.querySelector('.vertical');
+  const target = document.querySelector('.target');
+  const tag = document.querySelector('.tag');
+
+  // doesn't work outside the addEventListener
+  // const targetWidth = target.getBoundingClientRect().width;
+  // const targetHeight = target.getBoundingClientRect().height;
+
+  document.addEventListener('mousemove', (event) => {
+    console.log(event);
+    const x = event.clientX;
+    const y = event.clientY;
+    
+    // vertical.style.left = `${x}px`;
+    vertical.style.transform = `translate(${x}px, 0)`;
+
+    // horizontal.style.top = `${y}px`;
+    horizontal.style.transform = `translate(0, ${y}px)`;
+
+    // target.style.left = `${x}px`;
+    // target.style.top = `${y}px`;
+    const targetWidth= target.getBoundingClientRect().width;
+    const targetHeight = target.getBoundingClientRect().height;
+    target.style.transform = `translate(${x - targetWidth / 2}px, ${y - targetHeight / 2}px)`;
+
+    // tag.style.left = `${x}px`;
+    // tag.style.top = `${y}px`;
+    tag.style.transform = `translate(${x + 20}px, ${y + 20}px)`;    
+    tag.innerHTML = `${x}px, ${y}px`;
+  });
+</script>
+</body>
 </html>

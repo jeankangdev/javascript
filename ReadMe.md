@@ -72,4 +72,10 @@ chrome::extensions/ => remove extensions
 20. F12 > Select an element > Console > $0 > $0.nodeChild  
     Every HTML elements are Node objects, and every Node objects are EventTargets. Thus every HTML elements can use the EventTarget's APIs.
 
-21.
+21. display, top, left => bad for animation  
+    display => will-change: opacity;  
+    top, left (moving) => transform: translate( , );
+
+22. element.getBoundingClientRect() doesn't work outside of the '.addEventListener'..???
+
+23. element.style.transform = `translate(${x + 50}px, ${x + 50}px)`;
