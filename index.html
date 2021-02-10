@@ -52,31 +52,34 @@
   const target = document.querySelector('.target');
   const tag = document.querySelector('.tag');
 
-  // doesn't work outside the addEventListener
-  // const targetWidth = target.getBoundingClientRect().width;
-  // const targetHeight = target.getBoundingClientRect().height;
-
-  document.addEventListener('mousemove', (event) => {
-    console.log(event);
-    const x = event.clientX;
-    const y = event.clientY;
-    
-    // vertical.style.left = `${x}px`;
-    vertical.style.transform = `translate(${x}px, 0)`;
-
-    // horizontal.style.top = `${y}px`;
-    horizontal.style.transform = `translate(0, ${y}px)`;
-
-    // target.style.left = `${x}px`;
-    // target.style.top = `${y}px`;
-    const targetWidth= target.getBoundingClientRect().width;
+  addEventListener('load', () => {
+    // doesn't work outside the addEventListener - because of script defer option
+    // the element was not downloaded fully because JS was implemented before the document content was loaded
+    // put the code below in addEventListener('load', () => {});
+    const targetWidth = target.getBoundingClientRect().width;
     const targetHeight = target.getBoundingClientRect().height;
-    target.style.transform = `translate(${x - targetWidth / 2}px, ${y - targetHeight / 2}px)`;
 
-    // tag.style.left = `${x}px`;
-    // tag.style.top = `${y}px`;
-    tag.style.transform = `translate(${x + 20}px, ${y + 20}px)`;    
-    tag.innerHTML = `${x}px, ${y}px`;
+    document.addEventListener('mousemove', (event) => {
+      const x = event.clientX;
+      const y = event.clientY;
+      
+      // vertical.style.left = `${x}px`;
+      vertical.style.transform = `translateX(${x}px)`;
+
+      // horizontal.style.top = `${y}px`;
+      horizontal.style.transform = `translateY(${y}px)`;
+
+      // target.style.left = `${x}px`;
+      // target.style.top = `${y}px`;
+      // const targetWidth= target.getBoundingClientRect().width;
+      // const targetHeight = target.getBoundingClientRect().height;
+      target.style.transform = `translate(${x - targetWidth / 2}px, ${y - targetHeight / 2}px)`;
+
+      // tag.style.left = `${x}px`;
+      // tag.style.top = `${y}px`;
+      tag.style.transform = `translate(${x + 20}px, ${y + 20}px)`;    
+      tag.innerHTML = `${x}px, ${y}px`;
+    });
   });
 </script>
 </body>

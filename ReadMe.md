@@ -76,7 +76,7 @@ chrome::extensions/ => remove extensions
     display => will-change: opacity;  
     top, left (moving) => transform: translate( , );
 
-22. element.getBoundingClientRect() doesn't work outside of the '.addEventListener'..???
+22. element.getBoundingClientRect() doesn't work outside of the '.addEventListener'..??? Because the element wasn't downloaded(the document content wasn't loaded) before reading the JS...(because of script defer option). put the code in addEventListener('load', () => {});
 
 23. element.style.transform = `translate(${x + 50}px, ${x + 50}px)`;
 
