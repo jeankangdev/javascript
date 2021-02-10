@@ -46,3 +46,21 @@ chrome::extensions/ => remove extensions
 12. Alt + click: set cursor to multiple rows
 
 13. Ctrl + F2: change all occurrences
+
+14. element.scrollIntoView( {behavior: "smooth"} );
+
+15. const x = element.getBoundingClientRect().x;
+    const y = element.getBoundingClientRect().y;
+    const top = element.getBoundingClientRect().top;
+    const left = element.getBoundingClientRect().left;
+
+    window.scrollTo(x, y);  
+    window.scrollTo( {top: top, left: left, behavior: "smooth"} );
+    window.scrollTo( {top: y, left:x, behavior: "smooth"} );
+
+16. tab key doesn't indent on vscode
+    disable the Tab Moves Focus -mode by pressing Ctrl + M
+
+17. if the element is set to "display: none",  
+    element.getBoundingClientRect(); doesn't work.  
+    you should set it to "display: flex" before calling it.
