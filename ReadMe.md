@@ -47,7 +47,7 @@ chrome::extensions/ => remove extensions
 
 13. Ctrl + F2: change all occurrences
 
-14. element.scrollIntoView( {behavior: "smooth"} );
+14. element.scrollIntoView({ behavior: 'smooth', block: center });
 
 15. const x = element.getBoundingClientRect().x;
     const y = element.getBoundingClientRect().y;
@@ -64,3 +64,7 @@ chrome::extensions/ => remove extensions
 17. if the element is set to "display: none",  
     element.getBoundingClientRect(); doesn't work.  
     you should set it to "display: flex" before calling it.
+
+18. Alt + Shift + arrow down or up: copy the line
+
+19. Alt + Shift + drag: set cursor to multiple rows
