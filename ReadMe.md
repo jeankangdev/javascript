@@ -79,3 +79,5 @@ chrome::extensions/ => remove extensions
 22. element.getBoundingClientRect() doesn't work outside of the '.addEventListener'..???
 
 23. element.style.transform = `translate(${x + 50}px, ${x + 50}px)`;
+
+24. body { margin: 0 }; to remove JavaScript default margin
