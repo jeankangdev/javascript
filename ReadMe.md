@@ -68,3 +68,8 @@ chrome::extensions/ => remove extensions
 18. Alt + Shift + arrow down or up: copy the line
 
 19. Alt + Shift + drag: set cursor to multiple rows
+
+20. F12 > Select an element > Console > $0 > $0.nodeChild  
+    Every HTML elements are Node objects, and every Node objects are EventTargets. Thus every HTML elements can use the EventTarget's APIs.
+
+21.
