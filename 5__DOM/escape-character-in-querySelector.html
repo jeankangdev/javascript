@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escaping special characters in querySelector</title>
+</head>
+<body>
+  <div id="foo\bar"></div>
+  <div id="foo:bar"></div>
+  <script>
+    console.log('#foo\bar');    // #fooar
+    console.log('#foo\\bar');   // #foo\bar
+    console.log('#foo\\\bar');  // #foo\bar
+    console.log('#foo\\\\bar'); // #foo\\bar
+
+    const testOne = document.querySelector('#foo\\\\bar');  // foo\bar
+    console.log(testOne);
+
+    const testTwo = document.querySelector('#foo\\:bar');   // foo:bar
+    console.log(testTwo);
+  </script>
+</body>
+</html>

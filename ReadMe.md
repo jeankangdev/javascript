@@ -81,3 +81,13 @@ chrome::extensions/ => remove extensions
 23. element.style.transform = `translate(${x + 50}px, ${x + 50}px)`;
 
 24. body { margin: 0 }; to remove JavaScript default margin
+
+25. escaping special characters
+    25-1. use one \  
+     \' => \  
+     \\ => \  
+     \b => (the backspace)
+
+    25-2. use two \ (in querySelector)  
+    \\: => :
+    \\\\ => \\
