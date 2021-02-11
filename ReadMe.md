@@ -91,3 +91,7 @@ chrome::extensions/ => remove extensions
     25-2. use two \ (in querySelector)  
     \\: => :
     \\\\ => \\
+
+26. .createElement('tag') > .setAttribute('key', 'value') > .textContent = '' > .append(element) / . appendChild(element) / .insertBefore(element, reference)
+
+27. .innerHTML
