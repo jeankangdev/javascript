@@ -102,3 +102,5 @@ chrome::extensions/ => remove extensions
     => center texts without "display: flex"
 
 30. cssgradient.io
+
+31. input.focus() / input.blur()

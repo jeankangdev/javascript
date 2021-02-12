@@ -41,6 +41,7 @@
         -moz-box-shadow:    5px 11px 20px 0px rgba(50, 50, 50, 0.36);
         box-shadow:         5px 11px 20px 0px rgba(50, 50, 50, 0.36);
       }
+
       .header {
         display: flex;
         justify-content: center;
@@ -153,43 +154,49 @@
       </div>
     </div>
     <script>
-      // 1. input type => add button click => call eventListener
-      // 2. (check if it already exists) => create list (setAttributes / textContent)
-      // 3. delete button click => delete list
-      // 4. edit?
 
     addEventListener('load', () => {
       const btnAdd = document.querySelector('.add');
       const lists = document.querySelector('.lists');
-      // const btnsDelete = document.querySelectorAll('.delete');
 
-      function deleteShoppingList(element) {
-        console.log("delete");
-        console.log(element);
-        element.remove();
+      function createList(inputValue) {
+          const list = document.createElement('div');
+          // list.classList.add('list');
+          list.setAttribute('class', 'list');
+        
+          const item = document.createElement('span');
+          // item.classList.add('item');
+          item.setAttribute('class', 'item');
+          // item.textContent = inputValue;
+          item.innerText = inputValue;
+          list.append(item);
+
+          const deleteBtn = document.createElement('i');
+          // deleteBtn.classList.add('fas');
+          // deleteBtn.classList.add('fa-trash-alt');
+          // deleteBtn.classList.add('delete');
+          deleteBtn.setAttribute('class', 'fas fa-trash-alt delete');
+          deleteBtn.addEventListener('click', () => {
+            lists.removeChild(list);
+          });
+          list.append(deleteBtn);
+
+          return list;
       }
 
-      function addShoppingList() {
-        const input = document.querySelector('#input').value;
+      function onAdd() {
+        const input = document.querySelector('#input');
 
-        const list = document.createElement('div');
-        list.classList.add('list');
-      
-        const item = document.createElement('span');
-        item.classList.add('item');
-        item.textContent = input;   //innerText? innerHTML?
+        if (input.value) {
+          const list = createList(input.value);
+          lists.append(list);
 
-        const btnDelete = document.createElement('i');
-        btnDelete.classList.add('fas');
-        btnDelete.classList.add('fa-trash-alt');
-        btnDelete.classList.add('delete');
-
-        list.append(item);
-        list.append(btnDelete);
-        lists.append(list);
+          input.value = '';
+          input.focus();
+        }
       }
 
-      btnAdd.addEventListener('click', addShoppingList);
+      btnAdd.addEventListener('click', onAdd);
       
     })
     </script>
