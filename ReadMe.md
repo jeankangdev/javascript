@@ -95,3 +95,5 @@ chrome::extensions/ => remove extensions
 26. .createElement('tag') > .setAttribute('key', 'value') > .textContent = '' > .append(element) / . appendChild(element) / .insertBefore(element, reference)
 
 27. .innerHTML
+
+28. { box-sizing: border-box; } to make the box-sizing includes padding, border...
