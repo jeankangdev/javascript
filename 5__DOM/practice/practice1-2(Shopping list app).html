@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping list application</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+    <style>
+      :root {
+        /* Color */
+        --color-light-lime: #f2f7ed;
+        --color-lime: #ccff90;
+        --color-creme: #ffffc2;
+        --color-leaf: #99cc60;
+        --color-light-grey: #f5f5f6;
+        --color-grey: #e1e2e1;
+        --color-dark-grey: #4d4d4f;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        background: var(--color-grey);
+        color: var(--color-dark-grey);
+        font-family: 'Minion Pro', sans-serif;
+        text-align: center;
+      }
+
+      .mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
+        width: 375px;
+        height: 690px;
+        transform: scale(0.5, 0.5);
+        border-radius: 20px;
+        -webkit-box-shadow: 5px 11px 20px 0px rgba(50, 50, 50, 0.36);
+        -moz-box-shadow:    5px 11px 20px 0px rgba(50, 50, 50, 0.36);
+        box-shadow:         5px 11px 20px 0px rgba(50, 50, 50, 0.36);
+      }
+
+      .header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 70px;
+        border-radius: 20px 20px 0px 0px;
+        background: var(--color-lime);
+        color: var(--color-dark-grey);
+        font-size: 26px;
+        font-weight: 550;
+      }
+
+      .content {
+        width: 100%;
+        height: 100%;
+        background: var(--color-light-lime);
+        overflow-y: auto;
+      }
+
+      .lists {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .list {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 50px;
+        font-size: 22px;
+        padding: 0px 22px;
+      }
+
+      i {
+        cursor: pointer;
+      }
+
+      .delete {
+        transition: all 300ms ease-in;
+      }
+
+      .delete:hover {
+        color: var(--color-leaf);
+        transform: scale(1.1);
+      }
+
+      .textBar {
+        width: 100%;
+        height: 40px;
+        background: white;
+        cursor: text;
+      }
+
+      input {
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        width: 100%;
+        padding: 0 10px;
+        height: 100%;
+        border: none;
+        outline: none;
+        font-family: 'Minion Pro', sans-serif;
+        color: var(--color-dark-grey);
+        font-size: 22px;
+      }
+
+      .footer {
+        display: flex;
+        width: 100%;
+        height: 90px;
+        border-radius: 0px 0px 20px 20px;
+        background: var(--color-lime);
+      }
+
+      .add {
+        display: flex;
+        margin: auto;
+        font-size: 40px;
+        transition: all 100ms ease-in;
+      }
+
+      .add:hover {
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mobile">
+      <div class="header">Shopping List</div>
+      <div class="content">
+        <div class="lists">
+        </div>
+      </div>
+      <div class="textBar">
+        <input type="text" id="input">
+      </div>
+      <div class="footer">
+        <span class="add"><i class="fas fa-plus-circle"></i></span>
+      </div>
+    </div>
+    <script>
+
+    addEventListener('load', () => {
+      const btnAdd = document.querySelector('.add');
+      const lists = document.querySelector('.lists');
+
+      function createList(inputValue) {
+          const list = document.createElement('div');
+          list.setAttribute('class', 'list');
+        
+          const item = document.createElement('span');
+          item.setAttribute('class', 'item');
+          item.innerText = inputValue;
+          list.append(item);
+
+          const deleteBtn = document.createElement('i');
+          deleteBtn.setAttribute('class', 'fas fa-trash-alt delete');
+          deleteBtn.addEventListener('click', () => {
+            lists.removeChild(list);
+          });
+          list.append(deleteBtn);
+
+          return list;
+      }
+
+      function onAdd() {
+        const input = document.querySelector('#input');
+
+        if (input.value === '') {
+          input.focus();
+          return;
+        }
+
+        const list = createList(input.value);
+        lists.append(list);
+
+        // setTimeout is needed to make scrollIntoView work on both btnAdd and enter key
+        setTimeout(() => { scrollToLatest(); }, 100);
+        let scrollToLatest = () => {
+          list.scrollIntoView({ behavior: 'smooth', block: 'center'});
+        };
+
+        input.value = '';
+        input.focus();
+      }
+
+      btnAdd.addEventListener('click', onAdd);
+
+      input.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+          onAdd();
+        }
+      });
+    });
+
+    </script>
+  </body>
+</html>
