@@ -181,7 +181,7 @@
         const list = createList(input.value);
         lists.append(list);
 
-        // setTimeout(function, milliseconds);
+        // setTimeout is needed to make scrollIntoView work on both btnAdd and enter key
         setTimeout(() => { scrollToLatest(); }, 100);
         let scrollToLatest = () => {
           list.scrollIntoView({ behavior: 'smooth', block: 'center'});
