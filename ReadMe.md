@@ -96,4 +96,9 @@ chrome::extensions/ => remove extensions
 
 27. .innerHTML
 
-28. { box-sizing: border-box; } to make the box-sizing includes padding, border...
+28. { box-sizing: border-box; } to make the box-sizing includes padding, border, etc
+
+29. body { text-align: center; }, .list { margin: auto; }  
+    => center texts without "display: flex"
+
+30. cssgradient.io
