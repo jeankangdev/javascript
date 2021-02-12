@@ -187,13 +187,25 @@
       function onAdd() {
         const input = document.querySelector('#input');
 
-        if (input.value) {
-          const list = createList(input.value);
-          lists.append(list);
+        // if (input.value) {
+        //   const list = createList(input.value);
+        //   lists.append(list);
 
-          input.value = '';
+        //   input.value = '';
+        //   input.focus();
+        // }
+
+        if (input.value === '') {
           input.focus();
+          return;
         }
+
+        const list = createList(input.value);
+        lists.append(list);
+
+        input.value = '';
+        input.focus();
+
       }
 
       btnAdd.addEventListener('click', onAdd);
