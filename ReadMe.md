@@ -104,3 +104,5 @@ chrome::extensions/ => remove extensions
 30. cssgradient.io
 
 31. input.focus() / input.blur()
+
+32. element.addScrollIntoView doesn't work on btnAdd but works on 'Enter' key
