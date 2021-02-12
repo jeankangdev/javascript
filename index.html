@@ -129,7 +129,6 @@
       .add:hover {
         transform: scale(1.1);
       }
-
     </style>
   </head>
   <body>
@@ -182,8 +181,11 @@
         const list = createList(input.value);
         lists.append(list);
 
-        // doesn't work when click addBtn
-        list.scrollIntoView({ behavior: 'smooth', block: 'center'});
+        // setTimeout(function, milliseconds);
+        setTimeout(() => { scrollToLatest(); }, 100);
+        let scrollToLatest = () => {
+          list.scrollIntoView({ behavior: 'smooth', block: 'center'});
+        };
 
         input.value = '';
         input.focus();

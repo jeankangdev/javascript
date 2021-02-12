@@ -24,19 +24,19 @@ chrome::extensions/ => remove extensions
 
 - body {cursor: url();} => body, html {cursor: url(), auto;}
 
-5. position: absolute; => when I want the object to be moved freely
+5.  position: absolute; => when I want the object to be moved freely
 
-6. document.addEventListener('mousemove', () => {});
+6.  document.addEventListener('mousemove', () => {});
 
-7. <div> => block  
-   <span>=> inline
+7.  <div> => block  
+    <span>=> inline
 
-8. we can set elements globally, to const outside the function and we can change the properties of the const variables
+8.  we can set elements globally, to const outside the function and we can change the properties of the const variables
 
-9. how to put an element in the center?  
-   top: 50%;  
-   left: 50%;  
-   transform: translate(-50%, -50%);
+9.  how to put an element in the center?  
+    top: 50%;  
+    left: 50%;  
+    transform: translate(-50%, -50%);
 
 10. must add `px` to css  
     element.style.top = `${}px`;
@@ -105,4 +105,10 @@ chrome::extensions/ => remove extensions
 
 31. input.focus() / input.blur()
 
-32. element.addScrollIntoView doesn't work on btnAdd but works on 'Enter' key
+32. element.addScrollIntoView only works in setTimeout(function, millisecionds) as shown below
+
+        // setTimeout(function, milliseconds);
+        setTimeout(() => { scrollToLatest(); }, 100);
+        let scrollToLatest = () => {
+          list.scrollIntoView({ behavior: 'smooth', block: 'center'});
+        };
