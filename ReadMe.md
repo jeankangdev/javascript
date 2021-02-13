@@ -113,6 +113,12 @@ chrome::extensions/ => remove extensions
           list.scrollIntoView({ behavior: 'smooth', block: 'center'});
         };
 
-33. how to create a new DOM element?  
+33. document.addEventListener('wheel', callback, { passive: false });
+
+function callback(event) {  
+ event.preventDefault;  
+}
+
+34. how to create a new DOM element?  
     option1. element.innerHTML = `${data}`;  
     option2. document.createElement('tag'), element.setAttribute('key', 'value'), parent.append(child), parent.removeChild(child), element.remove();

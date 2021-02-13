@@ -30,7 +30,7 @@
   <script>
     document.addEventListener('wheel', event => {
       console.log('scrolling');
-      event.preventDefault();
+      event.preventDefault();   // event.preventDefault(); doesn't work on 'wheel'
     }, { passive: false });     // to make .preventDefault(); on 'wheel' work
 
     const checkbox = document.querySelector('input');
