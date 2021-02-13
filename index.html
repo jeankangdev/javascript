@@ -136,6 +136,10 @@
       <div class="header">Shopping List</div>
       <div class="content">
         <div class="lists">
+          <!-- <div class="list">
+            <span class="item"></span>
+            <i class="fas fa-trash-alt delete"></i>
+          </div> -->
         </div>
       </div>
       <div class="textBar">
@@ -151,21 +155,32 @@
       const btnAdd = document.querySelector('.add');
       const lists = document.querySelector('.lists');
 
+      let id = 0; // Using UUID or #id is better
       function createList(inputValue) {
           const list = document.createElement('div');
           list.setAttribute('class', 'list');
-        
-          const item = document.createElement('span');
-          item.setAttribute('class', 'item');
-          item.innerText = inputValue;
-          list.append(item);
+          list.setAttribute('data-id', `${id}`);
 
-          const deleteBtn = document.createElement('i');
-          deleteBtn.setAttribute('class', 'fas fa-trash-alt delete');
-          deleteBtn.addEventListener('click', () => {
-            lists.removeChild(list);
-          });
-          list.append(deleteBtn);
+          list.innerHTML = `
+            <span class="item">${inputValue}</span>
+            <i class="fas fa-trash-alt delete" data-id=${id}></i>
+          `;
+          id++;
+        
+          // const item = document.createElement('span');
+          // item.setAttribute('class', 'item');
+          // item.innerText = inputValue;
+          // list.append(item);
+
+          // const deleteBtn = document.createElement('i');
+          // deleteBtn.setAttribute('class', 'fas fa-trash-alt delete');
+
+          // Bad
+          // deleteBtn.addEventListener('click', () => {
+          //   lists.removeChild(list);
+          // });
+
+          // list.append(deleteBtn);
 
           return list;
       }
@@ -184,7 +199,7 @@
         // setTimeout is needed to make scrollIntoView work on both btnAdd and enter key
         setTimeout(() => { scrollToLatest(); }, 100);
         let scrollToLatest = () => {
-          list.scrollIntoView({ behavior: 'smooth', block: 'center'});
+          list.scrollIntoView({ behavior: 'smooth', block: 'start'});
         };
 
         input.value = '';
@@ -198,6 +213,13 @@
           onAdd();
         }
       });
+      
+      lists.addEventListener('click', (event) => {
+        if(event.target.nodeName === 'I') {
+          lists.removeChild(event.target.parentNode);
+        }
+      })
+
     });
 
     </script>
