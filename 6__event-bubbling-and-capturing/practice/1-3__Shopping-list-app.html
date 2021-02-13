@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shopping list application</title>
+    <title>Create a new DOM element</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
     <style>
       :root {
@@ -136,6 +136,10 @@
       <div class="header">Shopping List</div>
       <div class="content">
         <div class="lists">
+          <!-- <div class="list">
+            <span class="item"></span>
+            <i class="fas fa-trash-alt delete"></i>
+          </div> -->
         </div>
       </div>
       <div class="textBar">
@@ -154,18 +158,28 @@
       function createList(inputValue) {
           const list = document.createElement('div');
           list.setAttribute('class', 'list');
-        
-          const item = document.createElement('span');
-          item.setAttribute('class', 'item');
-          item.innerText = inputValue;
-          list.append(item);
 
-          const deleteBtn = document.createElement('i');
-          deleteBtn.setAttribute('class', 'fas fa-trash-alt delete');
-          deleteBtn.addEventListener('click', () => {
-            lists.removeChild(list);
-          });
-          list.append(deleteBtn);
+          // option 1. use element.innerHTML = ``;
+          list.innerHTML = `
+            <span class="item">${inputValue}</span>
+            <i class="fas fa-trash-alt delete"></i>
+          `;
+        
+          // option 2. use document.createElement('tag'), element.setAttribute('key', 'value'), parent.append(child), parent.removeChild(child), element.remove()
+          // const item = document.createElement('span');
+          // item.setAttribute('class', 'item');
+          // item.innerText = inputValue;
+          // list.append(item);
+
+          // const deleteBtn = document.createElement('i');
+          // deleteBtn.setAttribute('class', 'fas fa-trash-alt delete');
+
+          // Bad => go to line 214
+          // deleteBtn.addEventListener('click', () => {
+          //   lists.removeChild(list);
+          // });
+
+          // list.append(deleteBtn);
 
           return list;
       }
@@ -184,7 +198,7 @@
         // setTimeout is needed to make scrollIntoView work on both btnAdd and enter key
         setTimeout(() => { scrollToLatest(); }, 100);
         let scrollToLatest = () => {
-          list.scrollIntoView({ behavior: 'smooth', block: 'center'});
+          list.scrollIntoView({ behavior: 'smooth', block: 'start'});
         };
 
         input.value = '';
@@ -198,6 +212,13 @@
           onAdd();
         }
       });
+      
+      // Good (event delegation version of line 177)
+      lists.addEventListener('click', (event) => {
+        if(event.target.nodeName === 'I') {
+          lists.removeChild(event.target.parentNode);
+        }
+      })
     });
 
     </script>

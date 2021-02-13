@@ -105,10 +105,14 @@ chrome::extensions/ => remove extensions
 
 31. input.focus() / input.blur()
 
-32. element.addScrollIntoView only works in setTimeout(function, millisecionds) as shown below
+32. element.addScrollIntoView only works in setTimeout(function, milliseconds) as shown below
 
         // setTimeout(function, milliseconds);
         setTimeout(() => { scrollToLatest(); }, 100);
         let scrollToLatest = () => {
           list.scrollIntoView({ behavior: 'smooth', block: 'center'});
         };
+
+33. how to create a new DOM element?  
+    option1. element.innerHTML = `${data}`;  
+    option2. document.createElement('tag'), element.setAttribute('key', 'value'), parent.append(child), parent.removeChild(child), element.remove();
