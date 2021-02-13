@@ -155,17 +155,14 @@
       const btnAdd = document.querySelector('.add');
       const lists = document.querySelector('.lists');
 
-      let id = 0; // Using UUID or #id is better
       function createList(inputValue) {
           const list = document.createElement('div');
           list.setAttribute('class', 'list');
-          list.setAttribute('data-id', `${id}`);
 
           list.innerHTML = `
             <span class="item">${inputValue}</span>
-            <i class="fas fa-trash-alt delete" data-id=${id}></i>
+            <i class="fas fa-trash-alt delete"></i>
           `;
-          id++;
         
           // const item = document.createElement('span');
           // item.setAttribute('class', 'item');
@@ -175,7 +172,7 @@
           // const deleteBtn = document.createElement('i');
           // deleteBtn.setAttribute('class', 'fas fa-trash-alt delete');
 
-          // Bad
+          // Bad => go to line 214
           // deleteBtn.addEventListener('click', () => {
           //   lists.removeChild(list);
           // });
@@ -214,12 +211,12 @@
         }
       });
       
+      // Good (event delegation)
       lists.addEventListener('click', (event) => {
         if(event.target.nodeName === 'I') {
           lists.removeChild(event.target.parentNode);
         }
       })
-
     });
 
     </script>
