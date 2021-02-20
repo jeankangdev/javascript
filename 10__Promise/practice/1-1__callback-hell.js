@@ -1,5 +1,4 @@
-
-// 3. callback hell example
+// callback hell
 class UserStorage {
   loginUser(id, password, onSuccess, onError) {
     setTimeout(() => {
