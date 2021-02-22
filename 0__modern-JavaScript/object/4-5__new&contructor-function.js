@@ -71,8 +71,6 @@ function Accumulator(startingValue) {
   this.read = function() {
     this.value += +prompt("value?", 0);
   };
-  
-  return this.value;
 }
 
 let accumulator = new Accumulator(1);
