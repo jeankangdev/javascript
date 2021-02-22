@@ -1,4 +1,4 @@
-// method and this in object
+// method and this
 // https://ko.javascript.info/object-methods
 
 'use strict';
@@ -8,6 +8,7 @@
 // sum(): sum 2 values
 // mul(): multiply 2 values
 
+// A
 let calculator = {
   read() {
     let valueOne = prompt("value");
@@ -32,6 +33,8 @@ console.log(calculator.sum());
 console.log(calculator.mul());
 
 // 2. how can we make Method Chaining possible on the code below?
+
+// Q + A
 let ladder = {
   step: 0,
   up() {
