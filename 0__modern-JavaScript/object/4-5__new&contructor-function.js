@@ -7,8 +7,12 @@
 // how to make function A and B that can be new A() === new B()?
 
 // Q
-function A() { ... }
-function B() { ... }
+function A() { 
+  return 'string';
+ }
+function B() { 
+  return 'string';
+ }
 
 let a = new A;
 let b = new B;
@@ -31,7 +35,7 @@ function B() {
 let a = new A;
 let b = new B;
 
-alert ( a === b );
+alert ( a === b );  // true
 
 // 2. make a constructor function Calculator that has 3 methods as shown below
 // read()
