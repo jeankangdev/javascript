@@ -1,10 +1,10 @@
-'use strict';
-
 // convert object to primitive type
 // https://ko.javascript.info/object-toprimitive
 
+'use strict';
+
 // obj -> primitive: when calculate / print obj
-// 1, str ( alert(obj) )
+// 1. str ( alert(obj) )
 // 2. num (+obj)
 // 3. default ( obj + obj, obj + ~, obj == ~)
 
