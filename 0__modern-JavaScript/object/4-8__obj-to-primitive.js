@@ -19,6 +19,6 @@ let user = {
   }
 };
 
-alert(user);	// hint: string // {name: "John"}
-alert(+user);	// hint: number // 1000
+alert(user);	// hint: string (obj => str) // {name: "John"}
+alert(+user);	// hint: number (obj => num) // 1000
 alert(user + 500);	// hint: default // 1500
