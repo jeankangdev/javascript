@@ -6,6 +6,8 @@
 // 2. num (+obj)
 // 3. default ( obj + obj, obj + ~, obj == ~)
 
+// every obj has obj[Symbol.toPrimitive](hint) methods
+
 'use strict';
 
 let user = {
