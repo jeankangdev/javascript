@@ -18,6 +18,6 @@ let user = {
   }
 };
 
-console.log(user);	// hint: string (obj => str) // {name: "John"}
-console.log(+user);	// hint: number (obj => num) // 1000
-console.log(user + 500);	// hint: default // 1500
+alert(user);	// hint: string (obj => str) // {name: "John"}
+// alert(+user);	// hint: number (obj => num) // 1000
+// alert(user + 500);	// hint: default // 1500
