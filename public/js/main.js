@@ -1,7 +1,18 @@
-// 'use strict';
+'use strict';
 
-let str = "Hello";
+function readNumber() {
+	let num;
 
-str.test = 5;
+	do {
+		num = prompt("Enter a number", 0);
+	} while ( !isFinite(num) );
 
-alert(str.test);
+  if (num === '' || num === null) {
+    alert('ga');
+    return null;
+  }
+
+	return +num;
+}
+
+readNumber();
