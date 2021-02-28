@@ -22,4 +22,11 @@ let num = 255;
 console.log(num.toString(10));  // 255
 console.log(num.toString(2));   // 11111111
 console.log(num.toString(16));  // ff
+console.log(123456..toString(36)); // 2n9c
+console.log((123456).toString(36));// 2n9c
 
+// 3. rounding
+Math.floor(3.1) // 3
+Math.ceil(3.1)  // 4
+Math.round(3.1) // 3
+Math.trunc(3.1) // 3
