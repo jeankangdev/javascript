@@ -8,6 +8,10 @@
 // 2. num (+obj)
 // 3. default ( obj + obj, obj + ~, obj == ~)
 
+// * object.valueOf(): convert an obj to a primitive type 
+// (Every obj has .valueOf() method by default and JavaScript automatically invokes it when it's needed)
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf
+
 // 1.
 // every obj has a Symbol, SYmbol.toPrimitive and this is used to decide the hint of the obj
 // obj[Symbol.toPrimitive](hint) method is used to convert the type of an obj
@@ -24,7 +28,7 @@ let user = {
 
 console.log(user);	// hint: string (obj => str) // {name: "John"}
 console.log(+user);	// hint: number (obj => num) // 1000
-console.log(user + 500);	// hint: default // 1500
+console.log(user + 500);	// hint: default(num)  // 1500
 
 // 2.
 // toString / valueOf are the only way to convert the type of an obj

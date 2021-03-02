@@ -94,4 +94,3 @@ console.log(str);
 // if (str = str2), returns 0
 // if (str < str2), returns < 0
 
-// 16. 
