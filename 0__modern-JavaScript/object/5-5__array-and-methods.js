@@ -150,3 +150,74 @@ console.log(str);   // yuna;fatima;salma
 console.log(Array.isArray({})); // false
 console.log(Array.isArray([])); // true
 
+// thisArg: when func is (the property) in thisArg
+array.find(func, thisArg);
+array.filter(func, thisArg);
+array.map(func, thisArg);
+
+let army = {
+  minAge: 18,
+  maxAge: 27,
+  canJoin(person) {
+    return person.age >= this.minAge && person.age < this.maxAge;
+  }
+};
+
+let people = [
+  {age: 16},
+  {age: 20},
+  {age: 23},
+  {age: 30}
+];
+
+let soldiers = people.filter(army.canJoin, army); // army = thisArg (army.canJoin property is in the 'army')
+let soldiers = people.filter(person => army.canJoin(person)); // works the same with the line above
+
+// Q. write the function camelize that makes this possible
+// camelize("background-color") == 'backgroundColor';
+
+function camelize(str) {
+	return str
+	.split('-')
+	.map(
+	(word, index) => index == 0? word: word[0].toUpperCase() + word.slice(1)
+	)
+	.join('');
+}
+
+camelize("background-color"); // 'backgroundColor'
+
+// Q. write the function filterRange that gets an array arr, looks for elements with values higher or equal to a and return a result as an array
+// the function should not modify the array (it should return the new array)
+
+// A.
+function filterRange(arr, a, b) {
+	return arr.filter((item) => item >= a && item <= b)
+}
+
+let arr = [5, 3, 8, 1];
+let filtered = filterRange(arr, 1, 4);
+console.log( filtered );  // 3,1
+console.log( arr );       // 5,3,8,1
+
+// Q. write the code that sorts the array in decreasing order
+let arr = [5, 2, 1, -10, 8];
+
+// A.
+arr.sort((a, b) => b - a);
+console.log(arr);
+
+// Q. We have an array of strings arr, and we'd like to have a sorted copy of it, but keep arr unmodified
+// create a function copySorted(arr) that returns such a copy
+
+let arr = ["HTML", "JavaScript", "CSS"];
+
+// A. 
+function copySorted(arr) {
+	return arr.slice().sort();
+}
+
+let sorted = copySorted(arr);
+console.log( sorted );
+console.log( arr );
+
