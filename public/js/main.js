@@ -1,29 +1,29 @@
 'use strict';
 
-function Calculator() {
+function shuffle(array) {
+	let newArray = [];
 
-  this.methods = {
-    "-": (a, b) => a - b,
-    "+": (a, b) => a + b
-  };
+	for (let i = 0; i < array.length; i++) {
+		// generate randomIndex between 0 and 2(arr.length - 1)
+		// loop until newArray[randomIndex] doesn't exist
+		// store arry[i] in the newArray[randomIndex]
 
-  this.calculate = function(str) {
+		let randomIndex = randomIndexGenerator(0, array.length - 1);		
 
-    let split = str.split(' '),
-      a = +split[0],
-      op = split[1],
-      b = +split[2];
+		while(newArray[randomIndex]) {
+			randomIndex = randomIndexGenerator(0, array.length - 1);			
+		}
+		newArray[randomIndex] = array[i];
+	}
 
-    if (!this.methods[op] || isNaN(a) || isNaN(b)) {
-      return NaN;
-    }
+	return newArray;
 
-    return this.methods[op](a, b);
-  };
-
-  this.addMethod = function(name, func) {
-    this.methods[name] = func;
-  };
 }
-let calc = new Calculator();
-console.log( calc.calculate("3" + "7") );
+
+function randomIndexGenerator(min, max) {
+	return Math.floor(min + Math.random() * (max - min + 1));
+}
+
+let arr = [1, 2, 3];
+shuffle(arr);
+console.log(arr);

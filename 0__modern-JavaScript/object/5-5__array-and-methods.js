@@ -221,3 +221,275 @@ let sorted = copySorted(arr);
 console.log( sorted );
 console.log( arr );
 
+// Q. create a constructor function Calculator that creates "extendable" calculator objects
+// part1. implement the method calculate(str) that takes a string like "1 + 2" and returns the result
+// Should understand plus + and minus -
+
+// Q.
+let calc = new Calculator;
+console.log( calc.calculate("3 + 7") );  // 10
+
+// A.
+function Calculator() {
+	this.methods = {
+		"-": (a, b) => a - b,
+		"+": (a, b) => a + b
+	};
+
+	this.calculate = function(str) {
+
+		let split = str.split(' '),
+		a = +split[0],
+		op = split[1],
+		b = +split[2];
+
+		if (!this.method[op] || isNaN(a) || isNaN(b)) {
+			return NaN;
+		}
+		return this.method[op](a, b);
+	};
+}
+
+let calc = new Calculator;
+console.log( calc.calculate("3 + 7") );  // 10
+
+// part2. add the method addMethod(name, func) that teaches the calculator a new operation
+// it takes the operator name and the two-argument function func(a,b) that implements it
+
+let powerCalc = new Calculator;
+powerCalc.addMethod("*", (a, b) => a * b);
+powerCalc.addMethod("/", (a, b) => a / b);
+powerCalc.addMethod("**", (a, b) => a ** b);
+
+// A.
+function Calculator() {
+
+  this.methods = {
+    "+": (a, b) => a + b,
+    "-": (a, b) => a - b,
+  }
+  
+  this.calculate = function(str) {
+    let split = str.split('');
+    let a = +split[0];
+    let op = split[1];
+    let b = +split[2];
+
+    if (!this.methods[op] || isNaN(a) || isNaN(b)) {
+      return NaN;
+    }
+    return this.method[op](a, b);
+  }
+
+  this.addMethod = function(name, func) {
+    this.methods[name] = func;
+  }
+}
+
+let powerCalc = new Calculator;
+powerCalc.addMethod("*", (a, b) => a * b);
+powerCalc.addMethod("/", (a, b) => a / b);
+powerCalc.addMethod("**", (a, b) => a ** b);
+console.log(powerCalc);
+
+// Q. you have an array of user objects, each one has user.name
+// write the code that converts it into an array of names
+let john = { name: "John", age: 25 };
+let pete = { name: "Pete", age: 30 };
+let mary = { name: "Mary", age: 28 };
+
+let users = [ john, pete, mary ];
+
+let names = /* ... your code */
+console.log( names ); // John, Pete, Mary
+
+// A. 
+let names = users.map(user => user.name);
+console.log( names ); // John, Pete, Mary
+
+// Q. you have an array of user objects, each one has name, surname, and id
+// write the code to create another array from it, of objects with id and fullName,
+// where fullName is generated from name and surname
+
+let john = { name: "John", surname: "Smith", id: 1 };
+let pete = { name: "Pete", surname: "Hunt", id: 2 };
+let mary = { name: "Mary", surname: "Key", id: 3 };
+
+let users = [ john, pete, mary ];
+
+let usersMapped = /* ... your code ... */
+
+/*
+usersMapped = [
+  { fullName: "John Smith", id: 1 },
+  { fullName: "Pete Hunt", id: 2 },
+  { fullName: "Mary Key", id: 3 }
+]
+*/
+
+// A. additional brackets () are must in the arrow functions
+// there are 2 arrow functions
+// 1. without body ( value => expr )
+// 2. with body    ( value => {...})
+// JavaScript treats { as the start of function body, not the start of the object
+// so we need to wrap {} in the "normal" brackets ()
+let usersMapped = users.map(user => ({
+  fullName: `${user.name} ${user.surname}`,
+  id: user.id
+}));
+
+console.log(usersMapped);
+
+// Q. write the function sortByAge(users) that gets an array of objects with the age property and sorts them by age
+let john = { name: "John", age: 25 };
+let pete = { name: "Pete", age: 30 };
+let mary = { name: "Mary", age: 28 };
+
+let arr = [ pete, john, mary ];
+
+sortByAge(arr);
+
+// A.
+function sortByAge(arr) {
+	arr.sort((a, b) => a.age - b.age);
+}
+
+console.log(arr);
+
+// Q. shuffle an array
+let arr = [1, 2, 3];
+shuffle(arr); 
+// arr = [3, 2, 1]
+// arr = [1, 3, 2]...randomly
+
+// A-1. my answer
+function shuffle(array) {
+	let newArray = [];
+
+	for (let i = 0; i < array.length; i++) {
+		let randomIndex = randomIndexGenerator(0, array.length - 1);
+
+		while(newArray[randomIndex] !== undefined) {
+			randomIndex = randomIndexGenerator(0, array.length - 1);			
+		}
+		newArray[randomIndex] = array[i];
+	}
+	array.splice(0, array.length, newArray[0], newArray[1], newArray[2]);
+}
+
+function randomIndexGenerator(min, max) {
+	return Math.floor(min + Math.random() * (max - min + 1));
+}
+
+let arr = [1, 2, 3];
+shuffle(arr);
+console.log(arr);
+
+// A-2. short version
+function shuffle(array) {
+  array.sort(() => Math.random() - 0.5);
+}
+
+// A-3. long but more accurate version
+function shuffle(array) {
+  for (let i = array.length; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+let count = {
+  '123': 0,
+  '132': 0,
+  '213': 0,
+  '231': 0,
+  '321': 0,
+  '312': 0
+};
+
+for (let i = 0; i < 100; i++) {
+  let array = [1, 2, 3];
+  shuffle(array);
+  count[array.join('')]++;
+}
+
+// show counts of all possible permutations
+for (let key in count) {
+  console.log(`${key}: ${count[key]}`);
+}
+
+// Q. write the function getAverageAge(users) that gets an array of objects with property age and returns the average age
+
+// A-1. my answer
+function getAverageAge(users) {
+	let sumAge = 0;
+	users.map(user => {
+		sumAge += user.age;
+	});
+
+	return sumAge / users.length;
+}
+
+// A-2. use reduce
+// arr.reduce( function(accumulator, item, index, array) {}, [initial] );
+// arr.reduce( (sum, current) => sum + current, 0 );  // always specify the initial value
+// arr.reduce( (sum, current) => sum + current );     // takes the first elem as the initial and iterates from the 2nd elem (can't omit the initial for an empty array)
+
+function getAverageAge(users) {
+  return users.reduce((prev, user) => prev + user.age, 0) / users.length;
+}
+
+// Q. filter unique array members
+// create a function unique(arr) that should return an array with unique items or arr
+
+function unique(arr) {
+  /* your code */
+}
+
+let strings = ["Hare", "Krishna", "Hare", "Krishna",
+  "Krishna", "Krishna", "Hare", "Hare", ":-O"
+];
+
+alert( unique(strings) ); // Hare, Krishna, :-O
+
+// A 
+function unique(arr) {
+  let result = [];
+
+  for (let str of arr) {
+    if (!result.includes(arr)) {
+      result.push(str);
+    }
+  }
+  
+  return result;
+}
+
+// Q. create keyed object from array
+let users = [
+  {id: 'john', name: "John Smith", age: 20},
+  {id: 'ann', name: "Ann Smith", age: 24},
+  {id: 'pete', name: "Pete Peterson", age: 31},
+];
+
+let usersById = groupById(users);
+
+/*
+// after the call we should have:
+
+usersById = {
+  john: {id: 'john', name: "John Smith", age: 20},
+  ann: {id: 'ann', name: "Ann Smith", age: 24},
+  pete: {id: 'pete', name: "Pete Peterson", age: 31},
+}
+*/
+
+// A.
+function groupById(array) {
+  return array.reduce((obj, value) => {
+    obj[user.id] = value;
+    return obj;
+  }, {})
+}
+
+  
