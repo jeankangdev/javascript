@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>setTimeout goes to Task Queue, and only 1 Task Queue goes to Call Stack</title>
+  <style>
+    button:hover {
+      background-color: yellow;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button>btn</button>
+  <script>
+    const btn = document.querySelector('btn');
+    btn.addEventListener('click', () => {
+      setTimeout(() => {
+        console.log(setTimeout goes to Task Queue after 0 ms, and only 1 Task Queue goes to Call Stack);
+        console.log(while Event Loop waits for 0 ms, the web sometimes has time to run the events);
+        console.log(so in this code, I can still see the btn color changes after clicking the btn);
+      }, 0);
+    });
+  </script>
+</body>
+</html>
