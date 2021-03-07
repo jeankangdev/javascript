@@ -491,5 +491,3 @@ function groupById(array) {
     return obj;
   }, {})
 }
-
-  
