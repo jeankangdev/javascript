@@ -6,7 +6,7 @@ Reading 1 post of The Modern JavaScript Tutorial everyday
 
 ---
 
-#### PROBLEM SOLVING HISTORY
+## 💡 PROBLEM SOLVING HISTORY
 
 1.  2021/02/08 issue: Routing doesn't work
 
