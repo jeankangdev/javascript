@@ -46,4 +46,3 @@ console.log(obj);
 
 // console.log(rabbit.birthDate.getDate()); // original data had the birthDate method
 // console.log(obj.birthDate.getDate());    // error: birthDate is string (original data -> JSON(string) -> obj)
-

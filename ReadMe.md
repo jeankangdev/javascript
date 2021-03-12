@@ -1,22 +1,33 @@
-1. 2021/02/08 issue: Routing doesn't work
+## 🌱 SELF STUDY NOTE
 
-const path = require('path');
+https://javascript.info/
 
-app.get('/', function(req, res) {  
- res.sendFile(path.join(\_\_dirname + '/index.html'));  
-});
+Reading 1 post of The Modern JavaScript Tutorial everyday
 
-2. Console Error  
-   Unchecked runtime.lastError: The message port closed before a response was received.
+---
 
-chrome::extensions/ => remove extensions
+#### PROBLEM SOLVING HISTORY
+
+1.  2021/02/08 issue: Routing doesn't work
+
+        const path = require('path');
+
+        app.get('/', function(req, res) {
+        res.sendFile(path.join(\_\_dirname + '/index.html'));
+        });
+
+2.  Console Error
+
+- unchecked runtime.lastError: The message port closed before a response was received.
+
+- chrome::extensions/ => remove extensions
 
 3. stylesheet not loaded because of MIME-type
 
 - add the code below in server.js  
   app.use(express.static(\_\_dirname + '/public'));
 - make public > css > style.css  
-   public > img > img.png
+  public > img > img.png
 - include stylesheet in index.html
   <link rel="stylesheet" href="./css/style.css"> => no need to write public again since we did it in server.js
 
@@ -49,14 +60,14 @@ chrome::extensions/ => remove extensions
 
 14. element.scrollIntoView({ behavior: 'smooth', block: center });
 
-15. const x = element.getBoundingClientRect().x;
-    const y = element.getBoundingClientRect().y;
-    const top = element.getBoundingClientRect().top;
-    const left = element.getBoundingClientRect().left;
+15.     const x = element.getBoundingClientRect().x;
+        const y = element.getBoundingClientRect().y;
+        const top = element.getBoundingClientRect().top;
+        const left = element.getBoundingClientRect().left;
 
-    window.scrollTo(x, y);  
-    window.scrollTo( {top: top, left: left, behavior: "smooth"} );
-    window.scrollTo( {top: y, left:x, behavior: "smooth"} );
+        window.scrollTo(x, y);
+        window.scrollTo( {top: top, left: left, behavior: "smooth"} );
+        window.scrollTo( {top: y, left:x, behavior: "smooth"} );
 
 16. tab key doesn't indent on vscode
     disable the Tab Moves Focus -mode by pressing Ctrl + M
@@ -82,14 +93,14 @@ chrome::extensions/ => remove extensions
 
 24. body { margin: 0 }; to remove JavaScript default margin
 
-25. escaping special characters
+25. escaping special characters  
     25-1. use one \  
-     \' => \  
-     \\ => \  
-     \b => (the backspace)
+    \' => \  
+    \\ => \  
+    \b => (the backspace)
 
     25-2. use two \ (in querySelector)  
-    \\: => :
+     \\: => :
     \\\\ => \\
 
 26. .createElement('tag') > .setAttribute('key', 'value') > .textContent = '' > .append(element) / . appendChild(element) / .insertBefore(element, reference)
@@ -115,10 +126,10 @@ chrome::extensions/ => remove extensions
 
 33. document.addEventListener('wheel', callback, { passive: false });
 
-function callback(event) {  
- event.preventDefault;  
-}
+        function callback(event) {
+        event.preventDefault;
+        }
 
 34. how to create a new DOM element?  
-    option1. element.innerHTML = `${data}`;  
-    option2. document.createElement('tag'), element.setAttribute('key', 'value'), parent.append(child), parent.removeChild(child), element.remove();
+     option1. element.innerHTML = `${data}`;  
+     option2. document.createElement('tag'), element.setAttribute('key', 'value'), parent.append(child), parent.removeChild(child), element.remove();
