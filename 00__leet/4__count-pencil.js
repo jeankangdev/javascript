@@ -10,4 +10,4 @@ function countDosen(pencilNum) {
   return answer;
 }
 
-countDosen(999);
+console.log(countDosen(13));  // 2

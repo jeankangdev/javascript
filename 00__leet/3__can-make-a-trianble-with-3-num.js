@@ -17,4 +17,4 @@ function makeTriangle(a, b, c) {
   return answer;
 }
 
-console.log(makeTriangle(6, 5, 11));
+console.log(makeTriangle(6, 5, 11));  // 6 + 5 = 11, "can't make a triangle"

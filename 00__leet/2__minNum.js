@@ -9,4 +9,4 @@ function minNum(a, b, c) {
   return minNum;
 }
 
-console.log(minNum(6, 5, 11));
+console.log(minNum(6, 5, 11));  // 5
