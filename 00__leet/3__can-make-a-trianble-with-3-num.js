@@ -1,3 +1,5 @@
+'use strict';
+
 function makeTriangle(a, b, c) {
   let answer, max;
   let sum = a + b + c;
