@@ -19,7 +19,7 @@ array.length = 0;         // this empties the array
 // how to loop array
 // 1. for (let i = 0; i < array.length; i++)
 // 2. for (let item of arr): no index info
-// 3. for (let i in arr): never use it for array!
+// 3. for (let index in arr): never use it for array!
 
 // unlike obj, 'array' doesn't have Symbol.toPrimitive(for every hint) or valueOf(for hint: default or hint: number) methods
 // so 'array' converts itself to str in the example below
