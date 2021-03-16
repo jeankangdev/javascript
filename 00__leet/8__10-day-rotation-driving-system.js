@@ -1,11 +1,9 @@
 'use strict';
 
-'use strict';
-
-function solution(num, arr) {
+function solution(day, arr) {
   let answer = [];
 
-  let numToStr = num.toString();
+  let numToStr = day.toString();
 
   let arrToStr = arr.map((item) => item.toString());
 
