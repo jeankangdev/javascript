@@ -29,4 +29,4 @@ function solution(arr) {
 }
 
 let arr = ['banana', 'peach', 'pear'];
-console.log(solution(arr));
+console.log(solution(arr)); // 'banana'
