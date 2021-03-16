@@ -18,4 +18,4 @@ function solution(str) {
 }
 
 let str = 'COMPUTERPROGRAMMING';
-console.log(solution(str));
+console.log(solution(str)); // M, 3

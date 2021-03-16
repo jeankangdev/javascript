@@ -15,4 +15,4 @@ function solution(str) {
 }
 
 let str = 'BANANA';
-console.log(solution(str));
+console.log(solution(str)); // 'B#N#N#'

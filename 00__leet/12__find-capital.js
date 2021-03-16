@@ -21,4 +21,4 @@ function solution(str) {
 }
 
 let str = 'KoreaTimeGood';
-console.log(solution(str));
+console.log(solution(str)); // 3
