@@ -13,7 +13,7 @@ function solution(str) {
   // 2. use str.indexOf(char)
   let answer = '';
   for (let i = 0; i < str.length; i++) {
-    if (str.indexOf(str[i]) === i) answer += str[i];
+    if (str.indexOf(str[i]) === i) answer += str[i];  // if the char is unique, add it to answer
   }
 
   return answer;
