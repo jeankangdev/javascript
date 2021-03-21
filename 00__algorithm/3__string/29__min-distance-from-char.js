@@ -9,7 +9,7 @@ function solution(str, char) {
 	let counter = 1000;
 
 	for (let i = 0; i < n; i++) {
-		if (str[i] === 'e') {
+		if (str[i] === char) {
 			counter = 0;
 		} else {
 			counter++;
@@ -18,14 +18,13 @@ function solution(str, char) {
 	}
 
 	for (let i = n-1; i >= 0; i--) {
-		if (str[i] === 'e') {
+		if (str[i] === char) {
 			counter = 0;
 		} else {
 			temp = ++counter;
 			if (temp < answer[i]) answer[i] = temp;
 		}
 	}
-
 	return answer.join('');
 }
 
