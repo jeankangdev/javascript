@@ -1,17 +1,33 @@
 'use strict';
 
-function solution(str) {
-  // str.replace(condition, to) doesn't work for numbers
-	// return str.replace(/[^0-9]/, '');
+// console.clear();
 
-  let answerStr = str.split('').filter((char) => {
-    return isNaN(+char) === false
-  }).join('');  // '0208'
+// function solution(str, char) {
+// 	let answer = [];
+// 	let splitStr = [];
+// 	splitStr = str.split(char);	// ['t', 'ach', 'rmod', '']
 
-  let answerNum = +answerStr; // 208
+// 	splitStr.map((word) => {
+// 		let n = word.length;
+//     let temp = [];
+// 		for (let i = 0; i < n / 2; i++) {
+//       temp.unshift(i + 1);
+//       temp.push(i + 1);
+// 		}
+// 		answer.push(temp);
+// 		answer.push(0);
+// 	});
 
-  return answerNum;
-}
+// 	console.log(answer.join(''));
 
-let str = 'g0en2T0s8eSoft';
-console.log(solution(str)); // 208
+// 	return answer.join('');
+// }
+
+// let str = 'teachermode';
+// let char = 'e';
+
+// console.log(solution(str, char)); // 10121012210
+
+let str = 'orange';
+str = str.split('').unshift('my').join('');
+console.log(str);
