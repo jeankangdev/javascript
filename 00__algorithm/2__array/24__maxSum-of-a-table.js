@@ -1,7 +1,6 @@
 'use strict';
 
 // from a table, which sum is the max? among sumRow, sumCell, sum(Diagonal)Down, sum(Diagonal)Up
-
 function solution(table) {
 	let answer = Number.MIN_SAFE_INTEGER;
 	let n = table.length;
