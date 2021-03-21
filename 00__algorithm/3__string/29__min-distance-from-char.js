@@ -1,6 +1,6 @@
 'use strict';
 
-// convert a string to numbers that represent the minimum distance from the given char
+// convert a string to the collection of numbers that represent the minimum distance from the given char in the string
 
 function solution(str, char) {
 	let answer = [];
