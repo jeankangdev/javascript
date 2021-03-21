@@ -23,6 +23,7 @@ function solution(str, char) {
 		} else {
 			temp = ++counter;
 			if (temp < answer[i]) answer[i] = temp;
+      // answer[i] = Math.min(answer[i], temp);
 		}
 	}
 	return answer.join('');
