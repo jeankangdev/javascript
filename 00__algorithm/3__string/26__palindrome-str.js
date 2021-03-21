@@ -25,12 +25,10 @@ function solution(str) {
   return answer;
 
   // 3. use array.reverse()
-  let answer = "YES";
-  str = str.toLowerCase().split('');
-  let strReversed = str.reverse().join();
-
-  if (str !== strReversed) answer = "NO";
-  return answer;
+    // array.reverse() changes the original array,
+    // so we can't compare it
+    // thus we should use array.reverse() directly in the condition like below
+  return (str.toLowerCase() === str.toLowerCase().split('').reverse().join(''))? "YES" : "NO";  
 }
 
 let str = 'gooG';
