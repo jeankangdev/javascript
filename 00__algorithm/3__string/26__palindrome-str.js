@@ -23,6 +23,14 @@ function solution(str) {
   }
 
   return answer;
+
+  // 3. use array.reverse()
+  let answer = "YES";
+  str = str.toLowerCase().split('');
+  let strReversed = str.reverse().join();
+
+  if (str !== strReversed) answer = "NO";
+  return answer;
 }
 
 let str = 'gooG';
