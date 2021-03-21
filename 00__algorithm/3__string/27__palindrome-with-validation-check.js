@@ -1,5 +1,8 @@
 'use strict';
 
+// palindrome with validation check (for alphabets)
+// not case sensitive
+
 function solution(str) {
 	let answer = "YES";
 
