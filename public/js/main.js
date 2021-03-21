@@ -1,33 +1,30 @@
 'use strict';
 
-// console.clear();
+// 'KKHSSSSSSSE' => 'K2HS7E'
 
-// function solution(str, char) {
-// 	let answer = [];
-// 	let splitStr = [];
-// 	splitStr = str.split(char);	// ['t', 'ach', 'rmod', '']
+function solution(str) {
+	let answer = [];
+	let counter = 1;
 
-// 	splitStr.map((word) => {
-// 		let n = word.length;
-//     let temp = [];
-// 		for (let i = 0; i < n / 2; i++) {
-//       temp.unshift(i + 1);
-//       temp.push(i + 1);
-// 		}
-// 		answer.push(temp);
-// 		answer.push(0);
-// 	});
+	for (let i = 1; i < str.length; i++) {
+		if (str[i-1] === str[i]) {
+			counter++;
+			if (i === str.length - 1) {
+				answer.push(str[i-1]);
+				answer.push(counter);
+			}
+		} else {
+			answer.push(str[i-1]);
+			if (counter > 1) {
+				answer.push(counter);
+				counter = 1;
+			}
+			if (i === str.length - 1) answer.push(str[i]);
+		}
+	}
 
-// 	console.log(answer.join(''));
+	return answer.join('');
+}
 
-// 	return answer.join('');
-// }
-
-// let str = 'teachermode';
-// let char = 'e';
-
-// console.log(solution(str, char)); // 10121012210
-
-let str = 'orange';
-str = str.split('').unshift('my').join('');
-console.log(str);
+let str = 'KKHSSSSSSSE';
+console.log(solution(str));
