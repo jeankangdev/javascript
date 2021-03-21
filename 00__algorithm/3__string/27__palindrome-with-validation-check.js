@@ -13,8 +13,7 @@ function solution(str) {
 	// now filteredStr is lower case, with only alphabets
 	filteredStr = filteredStr.join(''); // array.join('') doesn't affect the original array 
 
-	let n = filteredStr.length;
-	
+	let n = filteredStr.length;	
 	for (let i = 0; i < n / 2; i++) {
 		if (filteredStr[i] !== filteredStr[n-i-1]) return "NO";
 	}
