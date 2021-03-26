@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>all callback function goes to Call Stack</title>
+  <style>
+    button:hover {
+      background: yellow;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button>btn</button>
+  <script>
+    'use strict';
+    
+    const btn = document.querySelector('button');
+    btn.addEventListener('click', () => {
+      // callback function goes to 'call stack'
+      // event loop waits until all the code inside the callback function finishes working
+      // however, this codes can never be finished
+      // thus the browser stops working, occurs errors
+      while(true) {
+        console.log(clicked);
+      }
+    });
+  </script>
+</body>
+</html>

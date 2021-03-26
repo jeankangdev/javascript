@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find a rabbit</title>
+  <style>
+    body {
+      background-color: black;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: auto;
+    }
+
+    .button {
+      background: orangered;
+      color: white;
+      border: 0px;
+      border-radius: 4px;
+      width: 100px;
+      height: 30px;
+      margin-bottom: 10px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    img {
+      width: 100px;
+    }    
+
+    .rabbit {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button class="button">Find a rabbit</button>
+    <img src="./img/carrot.png" alt="" class="carrot">
+    <img src="./img/carrot.png" alt="" class="carrot">
+    <img src="./img/carrot.png" alt="" class="carrot">
+    <img src="./img/carrot.png" alt="" class="carrot">
+    <img src="./img/carrot.png" alt="" class="carrot">
+    <img src="./img/carrot.png" alt="" class="carrot">
+    <img src="./img/carrot.png" alt="" class="carrot">
+    <img src="./img/rabbit.png" alt="" class="rabbit">
+    <img src="./img/carrot.png" alt="" class="carrot">
+    <img src="./img/carrot.png" alt="" class="carrot">
+    <img src="./img/carrot.png" alt="" class="carrot">
+    <img src="./img/carrot.png" alt="" class="carrot">
+    <img src="./img/carrot.png" alt="" class="carrot">
+    <img src="./img/carrot.png" alt="" class="carrot">
+    <img src="./img/carrot.png" alt="" class="carrot">
+    <img src="./img/carrot.png" alt="" class="carrot">
+  </div>
+  <script>
+
+    'use strict';
+
+    const button = document.querySelector('.button');
+    const rabbit = document.querySelector('.rabbit');
+
+    button.addEventListener('click', () => {
+      rabbit.style.display = "flex";
+      rabbit.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      // const top = rabbit.getBoundingClientRect().top;
+      // const left = rabbit.getBoundingClientRect().left;
+      // window.scrollTo( {top: top, left: left, behavior: "smooth" });
+    });
+  </script>
+</body>
+</html>
