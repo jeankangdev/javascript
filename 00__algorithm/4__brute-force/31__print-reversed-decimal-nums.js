@@ -8,15 +8,18 @@ function solution(nums) {
 		let reversedStr = [];
 
 		for (let char of str) {
-			reversedStr = reversedStr.unshift(char);
+			reversedStr.unshift(char);
 		}
 
-		if (reversedStr[0] === '0') reversedStr = reversedStr.shift();
-
+		while (reversedStr[0] === '0') {
+			reversedStr.shift();
+		}
+		
 		reversedStr = reversedStr.join('');
 
 		if (+reversedStr % 2 !== 0) answer.push(+reversedStr);
 	}
+
 	return answer;
 }
 
