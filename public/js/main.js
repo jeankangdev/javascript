@@ -1,21 +1,34 @@
 'use strict';
 
+console.clear();
+
+function isPrime(num) {
+	let answer;
+
+	if (num === 1) answer = false;
+
+	for (let i = 2; i <= parseInt(num / 2); i++) {
+		if (num % i === 0) {
+			answer = false;
+		}
+		answer = true;
+	}
+	return answer;
+}
+
 function solution(nums) {
 	let answer = [];
 
-	for (let num of nums) {
-		let str = num.toString();
-		let reversedStr = [];
+	for(let num of nums) {
+		let reversedNum = 0;
 
-		for (let char of str) {
-			reversedStr = reversedStr.unshift(char);
+		while(num) {
+			let one = num % 10; // 2
+			reversedNum = reversedNum * 10 + one; // add numbers in the reversed order
+			num = parseInt(num / 10);	// 3
 		}
 
-		if (reversedStr[0] === '0') reversedStr = reversedStr.shift();
-
-		reversedStr = reversedStr.join('');
-
-		if (+reversedStr % 2 !== 0) answer.push(+reversedStr);
+		if (isPrime(reversedNum)) answer.push(reversedNum);
 	}
 	return answer;
 }
