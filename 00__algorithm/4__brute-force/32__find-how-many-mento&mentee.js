@@ -14,7 +14,7 @@ function solution(ranks) {
 
 			// find mento & mentee's ranks
 			for (let k = 0; k < testNum; k++) {
-				let mentoRank, menteeRank = 0;
+				let mentoRank = menteeRank = 0;
 				for (let s = 0; s < studentNum; s++) {
 					if (ranks[k][s] === i) mentoRank = s;
 					if (ranks[k][s] === j) menteeRank = s;
@@ -34,4 +34,4 @@ let ranks = [
 	[3, 1, 4, 2]
 ];
 
-console.log(solution(ranks));
+console.log(solution(ranks)); // 3
