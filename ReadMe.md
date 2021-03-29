@@ -1,4 +1,4 @@
-## 🌱 SELF STUDY NOTE
+## 🌱 SELF STUDY NOTE 
 
 https://javascript.info/
 
