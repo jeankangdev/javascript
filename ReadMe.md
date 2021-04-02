@@ -1,6 +1,6 @@
 ## 🌱 SELF STUDY NOTE 
 
-https://javascript.info/ 
+https://javascript.info/  
 
 Reading 1 post of The Modern JavaScript Tutorial everyday
 
